@@ -3,6 +3,8 @@ defmodule PragTest.DataCase do
 
   using do
     quote do
+      import PragTest.Factory
+
       import PragTest.DataCase
     end
   end

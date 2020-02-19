@@ -1,12 +1,10 @@
 defmodule PragTest.Accounts.CredentialTest do
   use PragTest.DataCase
-  alias PragTest.Accounts.{Credential, User}
-  alias PragTest.Repo
+  alias PragTest.Accounts.Credential
 
   describe "get/1" do
     setup do
-      user = insert_user(%{email: "json@rinobr.com"})
-      credential = insert_credential(%{user_id: user.id, type: "email"})
+      credential = insert(:credential)
 
       %{credential: credential}
     end
@@ -29,7 +27,7 @@ defmodule PragTest.Accounts.CredentialTest do
     }
 
     setup do
-      user = insert_user(%{email: "json@rinobr.com"})
+      user = insert(:user)
 
       %{user: user}
     end
@@ -53,13 +51,5 @@ defmodule PragTest.Accounts.CredentialTest do
 
       assert {"is invalid", _} = errors[:type]
     end
-  end
-
-  defp insert_user(attrs) do
-    Repo.insert!(struct(User, attrs))
-  end
-
-  defp insert_credential(attrs) do
-    Repo.insert!(struct(Credential, attrs))
   end
 end

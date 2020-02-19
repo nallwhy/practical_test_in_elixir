@@ -5,13 +5,8 @@ defmodule PragTest.Accounts.UserTest do
   alias PragTest.Repo
 
   describe "get/1" do
-    @attrs %{
-      email: "json@rinobr.com",
-      name: "json"
-    }
-
     setup do
-      user = insert_user(@attrs)
+      user = insert(:user)
 
       %{user: user}
     end
@@ -60,7 +55,7 @@ defmodule PragTest.Accounts.UserTest do
     end
 
     test "with duplicated email returns error" do
-      insert_user(@attrs)
+      insert(:user, @attrs)
 
       assert {:error, %Ecto.Changeset{errors: errors}} =
                User.create(%{email: @attrs.email, name: "not json"})
@@ -84,11 +79,7 @@ defmodule PragTest.Accounts.UserTest do
     }
 
     setup do
-      user =
-        insert_user(%{
-          email: "json@rinobr.com",
-          name: "json"
-        })
+      user = insert(:user)
 
       %{user: user}
     end
@@ -118,9 +109,5 @@ defmodule PragTest.Accounts.UserTest do
 
       assert {:ok, updated_user} = User.update(user, @attrs)
     end
-  end
-
-  defp insert_user(attrs) do
-    Repo.insert!(struct(User, attrs))
   end
 end
