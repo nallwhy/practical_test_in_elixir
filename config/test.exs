@@ -9,3 +9,5 @@ config :prag_test, PragTest.Repo,
   password: "postgres",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :prag_test, naver_place_crawler: PragTest.External.NaverPlace.Mock

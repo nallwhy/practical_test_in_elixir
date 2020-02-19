@@ -26,7 +26,11 @@ defmodule PragTest.MixProject do
     [
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:ex_machina, "~> 2.3", only: :test}
+      {:ex_machina, "~> 2.3", only: :test},
+      {:tesla, "~> 1.3.0"},
+      {:hackney, "~> 1.15.2"},
+      {:jason, ">= 1.0.0"},
+      {:mox, "~> 0.5", only: :test}
     ]
   end
 
