@@ -5,16 +5,18 @@ defmodule PragTest.Accounts.UserTest do
   alias PragTest.Repo
 
   describe "get/1" do
-    setup do
+    test "with exist id returns ok" do
       user = insert(:user)
 
-      %{user: user}
-    end
-
-    test "with exist id returns ok", %{user: user} do
       assert %User{} = existing_user = User.get(user.id)
       assert existing_user.email == user.email
       assert existing_user.name == user.name
+    end
+
+    test "with exist but deleted id returns ok" do
+      user = insert(:user, status: "deleted")
+
+      assert User.get(user.id) == nil
     end
 
     test "with not exsiting id returns ok" do

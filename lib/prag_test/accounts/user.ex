@@ -1,6 +1,6 @@
 defmodule PragTest.Accounts.User do
   use Ecto.Schema
-  import Ecto.Changeset
+  import Ecto.{Changeset, Query}
   alias PragTest.Repo
 
   schema "users" do
@@ -46,7 +46,11 @@ defmodule PragTest.Accounts.User do
     changeset |> validate_length(:name, max: 20)
   end
 
-  def get(id), do: __MODULE__ |> Repo.get(id)
+  def get(id) do
+    __MODULE__
+    |> where([u], u.status != "deleted")
+    |> Repo.get(id)
+  end
 
   def create(attrs) do
     %__MODULE__{}
