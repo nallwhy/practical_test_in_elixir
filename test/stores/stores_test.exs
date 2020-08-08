@@ -1,6 +1,6 @@
 defmodule PragTest.Stores.StoreTest do
   use PragTest.DataCase
-  import Mox
+  import Hammox
   alias PragTest.Stores
   alias PragTest.Stores.Store
 

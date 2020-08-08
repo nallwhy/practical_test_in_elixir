@@ -30,7 +30,7 @@ defmodule PragTest.MixProject do
       {:tesla, "~> 1.3.0"},
       {:hackney, "~> 1.15.2"},
       {:jason, ">= 1.0.0"},
-      {:mox, "~> 0.5", only: :test}
+      {:hammox, "~> 0.2.1", only: :test}
     ]
   end
 
